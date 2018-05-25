@@ -8,12 +8,6 @@ source("player-stats.R")
 server <- function(input, output) {
   
   
-  output$stats_image <- renderImage(
-    
-    
-  )
-  
-  
   output$stats <- renderUI({
     player <- stats_df %>%
       filter(player_names == input$stat_name)
