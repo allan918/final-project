@@ -6,6 +6,8 @@ library(dplyr)
 server <- function(input, output) {
   
   
+  # insert plots and stuff here
+  
   
   
   
