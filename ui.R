@@ -1,5 +1,8 @@
 library(shiny)
 library(ggplot2)
+
+source("scripts/player-stats.R")
+
 ui <- fluidPage(
   theme = "styles.css",
   h1("NBA"),
@@ -37,8 +40,18 @@ ui <- fluidPage(
       
       
     ),
+    # player stats
     tabPanel(
-      
+      "Active Player Statistics",
+      sidebarLayout(
+        sidebarPanel(
+          textInput(
+            inputId = "stat_name",
+            label = "Type in a Player Name",
+            choices = player_names
+          )
+        )
+      )
     )
   )
 )
