@@ -6,28 +6,14 @@ stats_df <- read.csv(file = "data/points_data.csv", stringsAsFactors = FALSE)
 
 stats_df <- stats_df[-c(387), ]
 
-nba_info_df <- read.csv(file = "../data/nba.csv", stringsAsFactors = FALSE)
+nba_info_df <- read.csv(file = "data/nba.csv", stringsAsFactors = FALSE)
 
 nba_info_df <- nba_info_df %>%
   filter(X.Team.Abbr. != "")
 
 player_names <- paste(stats_df$X.FirstName, stats_df$X.LastName)
 
-player_position <- stats_df$X.Position
-
-jersey_number <- stats_df$X.Jersey.Num
-
-player_height <- stats_df$X.Height
-
-player_weight <- stats_df$X.Weight
-
-player_age <- stats_df$X.Age
-
-player_team <- paste(stats_df$X.Team.City, stats_df$X.Team.Name)
-
-player_birthday <- stats_df$X.Birth.Date
-
-games_played <- stats_df$X.GamesPlayed
+stats_df$player_names <- player_names
 
 stats_df$ppg <- (stats_df$X.FtMade + 2 * stats_df$X.Fg2PtMade + 3 * stats_df$X.Fg3PtMade) / stats_df$X.GamesPlayed
 

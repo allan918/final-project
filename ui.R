@@ -1,7 +1,7 @@
 library(shiny)
 library(ggplot2)
 
-source("scripts/player-stats.R")
+source("player-stats.R")
 
 ui <- fluidPage(
   theme = "styles.css",
@@ -20,24 +20,16 @@ ui <- fluidPage(
         sidebarPanel(
           # select widget by states
           textInput(
-            inputId = "state",
-            label = "State Selection",
-            choices = list(
-              "Illinois" = "IL",
-              "Indiana" = "IN",
-              "Michigan" = "MI",
-              "Ohio" = "OH",
-              "Wisconsin" = "WI"
-            )
+            inputId = "something",
+            label = "input something"
           )
         ),
         mainPanel(
-          plotOutput("state")
         )
       )
     ),
     tabPanel(
-      
+      "Map of Colleges"
       
     ),
     # player stats
@@ -48,8 +40,11 @@ ui <- fluidPage(
           textInput(
             inputId = "stat_name",
             label = "Type in a Player Name",
-            choices = player_names
+            value = player_names
           )
+        ),
+        mainPanel(
+          htmlOutput("stats")
         )
       )
     )
