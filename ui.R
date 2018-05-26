@@ -12,10 +12,9 @@ ui <- fluidPage(
       "Introduction"
       
     ),
-    
     # the second page
     tabPanel(
-      "Birthday by State and Team",
+      "Birth place by State and Team",
       sidebarLayout(
         sidebarPanel(
           # select widget by states
@@ -54,6 +53,7 @@ ui <- fluidPage(
               "Jazz" = "Jazz",
               "Wizards" = "Wizards"
             )
+
           )
         ),
         mainPanel(
@@ -63,7 +63,6 @@ ui <- fluidPage(
     ),
     tabPanel(
       "Map of Colleges"
-      
     ),
     # player stats
     tabPanel(
@@ -85,4 +84,5 @@ ui <- fluidPage(
     )
   )
 )
+
 shinyUI(ui)
