@@ -4,6 +4,7 @@ library(plotly)
 library(dplyr)
 
 source("player-stats.R")
+source("scripts/college_production.R")
 
 server <- function(input, output) {
   
@@ -32,6 +33,10 @@ server <- function(input, output) {
     str2 <- paste(player$X.Height, "|", player$X.Weight, "lbs")
     str3 <- paste()
     HTML(paste(str1, str2, sep = "<br/>"))
+  })
+  
+  output$college_map <- renderPlotly({
+    return(build_college_map(input$team_coll))
   })
 }
 

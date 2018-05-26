@@ -29,7 +29,7 @@ build_college_map <- function(team) {
     marker_size <- to_plot$count
   }
   # Plots The Map using the coordinates, etc.!
-  plot_ly(
+  mapped <- plot_ly(
     type = "scattergeo", lon = to_plot$longitude, lat = to_plot$latitude, 
     mode = "markers",
     text = paste0(
@@ -67,4 +67,5 @@ build_college_map <- function(team) {
         dtick = 5
       )
     ))
+  return(mapped)
 }
