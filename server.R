@@ -7,14 +7,31 @@ source("player-stats.R")
 
 server <- function(input, output) {
   
+  simpleCap <- function(x) {
+    s <- strsplit(x, " ")[[1]]
+    paste(toupper(substring(s, 1, 1)), substring(s, 2),
+          sep = "", collapse = " ")
+  }
+  
+  output$selected_name <- renderText({
+    paste0(simpleCap(input$stat_name))
+  })
+  
+  output$player_image <- renderUI({
+    player <- nba_info_df %>%
+      filter(tolower(player_names) == tolower(input$stat_name))
+    tags$img(src = player$X.Official.Image.URL)
+  })
+  
   
   output$stats <- renderUI({
     player <- stats_df %>%
-      filter(player_names == input$stat_name)
-    str1 <- paste(input$stat_name)
-    str2 <- paste(player$X.Position)
-    str3 <- paste(player$X.Jersey.Num)
-    HTML(paste(str1, str2, str3, sep = "<br/>"))
+      filter(tolower(player_names) == tolower(input$stat_name))
+    str1 <- paste0(player$X.Team.City, " ", player$X.Team.Name,
+                   " #", player$X.Jersey.Num, " | ", player$X.Position)
+    str2 <- paste(player$X.Height, "|", player$X.Weight, "lbs")
+    str3 <- paste()
+    HTML(paste(str1, str2, sep = "<br/>"))
   })
 }
 

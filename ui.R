@@ -19,12 +19,45 @@ ui <- fluidPage(
       sidebarLayout(
         sidebarPanel(
           # select widget by states
-          textInput(
-            inputId = "something",
-            label = "input something"
+          selectInput(
+            inputId = "team",
+            label = "Which team do u want to view?",
+            choices = list(
+              "Hawks" = "Hawks",
+              "Celtics" = "Celtics",
+              "Nets" = "Nets",
+              "Hornets" = "Hornets",
+              "Bulls" = "Bulls",
+              "Cavaliers" = "Cavaliers",
+              "Mavericks" = "Mavericks",
+              "Nuggets" = "Nuggets",
+              "Pistons" = "Pistons",
+              "Warriors" = "Warrirors",
+              "Rockets" = "Rockets",
+              "Pacers" = "Pacers",
+              "Clippers" = "Clippers",
+              "Lakers" = "Lakers",
+              "Grizzlies" = "Grizzlies",
+              "Heat" = "Heat",
+              "Bucks" = "Bucks",
+              "Timberwolves" = "Timberwolves",
+              "Pelicans" = "Pelicans",
+              "Knicks" = "Knicks",
+              "Thunder" = "Thunder",
+              "Magic" = "Magic",
+              "76ers" = "76ers",
+              "Suns" = "Suns",
+              "Blazers" = "Blazers",
+              "Kings" = "Kings",
+              "Spurs"= "Spurs",
+              "Raptors" = "Raptors",
+              "Jazz" = "Jazz",
+              "Wizards" = "Wizards"
+            )
           )
         ),
         mainPanel(
+          
         )
       )
     ),
@@ -44,6 +77,8 @@ ui <- fluidPage(
           )
         ),
         mainPanel(
+          textOutput("selected_name"),
+          uiOutput("player_image"),
           htmlOutput("stats")
         )
       )
