@@ -1,10 +1,7 @@
 # Function that plots the
 library(dplyr)
 library(plotly)
-build_college_map <- function(team) {
-  nba_players <- read.csv("../data/nba.csv", stringsAsFactors = F)
-  colleges <- read.csv("../data/nba_colleges_location.csv",
-                       stringsAsFactors = F)
+build_college_map <- function(team, nba_players, colleges) {
   # To remove the coaches. Which have an age of 0.
   nba_players <- filter(nba_players, X.Age != 0) %>%
     select(X.College, X.Team.Abbr.)
@@ -28,6 +25,13 @@ build_college_map <- function(team) {
   } else {
     marker_size <- to_plot$count
   }
+  m <- list(
+    l = 100,
+    r = 100,
+    b = 200,
+    t = 200,
+    pad = 8
+  )
   # Plots The Map using the coordinates, etc.!
   mapped <- plot_ly(
     type = "scattergeo", lon = to_plot$longitude, lat = to_plot$latitude, 
@@ -65,7 +69,7 @@ build_college_map <- function(team) {
         gridwidth = 0.5,
         range = c(20, 60),
         dtick = 5
-      )
+      ), autosize = F, width = 1000, height = 1000, margin = m
     ))
   return(mapped)
 }

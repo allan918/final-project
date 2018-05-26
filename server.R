@@ -34,9 +34,13 @@ server <- function(input, output) {
     str3 <- paste()
     HTML(paste(str1, str2, sep = "<br/>"))
   })
-  
+  # To pass the dataframes to the function
+  nba_players <- read.csv("data/nba.csv", stringsAsFactors = F)
+  colleges <- read.csv("data/nba_colleges_location.csv",
+                       stringsAsFactors = F)
+  # Plots the college map
   output$college_map <- renderPlotly({
-    return(build_college_map(input$team_coll))
+    build_college_map(input$team_coll, nba_players, colleges)
   })
 }
 
