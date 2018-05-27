@@ -10,7 +10,6 @@ ui <- fluidPage(
     # the first page
     tabPanel(
       "Introduction"
-      
     ),
     # the second page
     tabPanel(
@@ -31,7 +30,7 @@ ui <- fluidPage(
               "Mavericks" = "Mavericks",
               "Nuggets" = "Nuggets",
               "Pistons" = "Pistons",
-              "Warriors" = "Warrirors",
+              "Warriors" = "Warriors",
               "Rockets" = "Rockets",
               "Pacers" = "Pacers",
               "Clippers" = "Clippers",
@@ -46,15 +45,18 @@ ui <- fluidPage(
               "Magic" = "Magic",
               "76ers" = "76ers",
               "Suns" = "Suns",
-              "Blazers" = "Blazers",
+              "Trail Blazers" = "Trail Blazers",
               "Kings" = "Kings",
-              "Spurs"= "Spurs",
+              "Spurs" = "Spurs",
               "Raptors" = "Raptors",
               "Jazz" = "Jazz",
               "Wizards" = "Wizards"
             )
-    )),
-    mainPanel())),
+          )
+        ),
+        mainPanel(plotlyOutput("state_plot"))
+      )
+    ),
     tabPanel(
       "Map of Colleges"
     ),
