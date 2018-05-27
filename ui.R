@@ -1,5 +1,6 @@
 library(shiny)
 library(ggplot2)
+library(plotly)
 
 source("player-stats.R")
 
@@ -55,10 +56,55 @@ ui <- fluidPage(
           )
         ),
         mainPanel(plotlyOutput("state_plot"))
-      )
-    ),
+
+          )
+        ),
     tabPanel(
-      "Map of Colleges"
+      "Map of Colleges",
+      sidebarLayout(
+        sidebarPanel(
+          # select for team
+          selectInput(
+            inputId = "team_coll",
+            label = "Select a team",
+            choices = list("All" = "all",
+              "Atlanta Hawks" = "ATL",
+              "Boston Celtics" = "BOS",
+              "Brooklyn Nets" = "BRO",
+              "Charlotte Hornets" = "CHA",
+              "Chicago Bulls" = "CHI",
+              "Cleveland Cavaliers" = "CLE",
+              "Dallas Mavericks" = "DAL",
+              "Denver Nuggets" = "DEN",
+              "Detroit Pistons" = "DET",
+              "Golden State Warriors" = "GSW",
+              "Houston Rockets" = "HOU",
+              "Indiana Pacers" = "IND",
+              "Los Angeles Clippers" = "LAC",
+              "Los Angeles Lakers" = "LAL",
+              "Memphis Grizzlies" = "MEM",
+              "Miami Heat" = "MIA",
+              "Milwaukee Bucks" = "MIL",
+              "Minnesota Timberwolves" = "MIN",
+              "New Orleans Pelicans" = "NOP",
+              "New York Knicks" = "NYK",
+              "Oklahoma City Thunder" = "OKC",
+              "Orlando Magic" = "ORL",
+              "Philadelphia 76ers" = "PHI",
+              "Phoenix Suns" = "PHX",
+              "Portland Trail Blazers" = "POR",
+              "Sacramento Kings" = "SAC",
+              "San Antonio Spurs"= "SAS",
+              "Toronto Raptors" = "TOR",
+              "Utah Jazz" = "UTA",
+              "Washington Wizards" = "WAS"
+            )
+          )
+        ),
+        mainPanel(
+          plotlyOutput("college_map")
+        )
+      )
     ),
     # player stats
     tabPanel(
@@ -72,6 +118,8 @@ ui <- fluidPage(
           )
         ),
         mainPanel(
+          textOutput("selected_name"),
+          uiOutput("player_image"),
           htmlOutput("stats")
         )
       )
