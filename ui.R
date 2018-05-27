@@ -22,6 +22,7 @@ ui <- fluidPage(
             inputId = "team",
             label = "Which team do u want to view?",
             choices = list(
+              "All" = "all",
               "Hawks" = "Hawks",
               "Celtics" = "Celtics",
               "Nets" = "Nets",
