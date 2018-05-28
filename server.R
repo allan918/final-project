@@ -2,10 +2,9 @@ library(shiny)
 library(ggplot2)
 library(plotly)
 library(dplyr)
-
 source("player-stats.R")
+source("scripts/state-name.R")
 source("scripts/college_production.R")
-
 server <- function(input, output) {
   
   simpleCap <- function(x) {
@@ -51,6 +50,37 @@ server <- function(input, output) {
   # Plots the college map
   output$college_map <- renderPlotly({
     build_college_map(input$team_coll, nba_players, colleges)
+  })
+  players <- reactive({
+    player <- read.csv("data/nba.csv", stringsAsFactors = FALSE) %>%
+      filter(X.Birth.Country == "USA")
+    player$state <- state_name(player$X.Birth.City)
+    player$count <- 1
+    if(input$team != "all") {
+      player <- filter(player, X.Team.Name == input$team)
+    }
+    play_group <- group_by(player, state) %>%
+      summarise(sum = sum(count))
+    play_group
+  })
+  output$state_plot <- renderPlotly({
+    g <- list(
+      scope = "usa",
+      projection = list(type = "albers usa"),
+      showlakes = TRUE,
+      lakecolor = toRGB("white")
+    )
+    p <- plot_geo(players(), locationmode = "USA-states") %>%
+      add_trace(
+        z = ~ sum, locations = ~ state,
+        color = ~ sum, colors = "Purples"
+      ) %>%
+      colorbar(title = "Players") %>%
+      layout(
+        title = "Counts of the NBA player by state",
+        geo = g
+      )
+    p
   })
 }
 

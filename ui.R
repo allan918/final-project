@@ -11,7 +11,6 @@ ui <- fluidPage(
     # the first page
     tabPanel(
       "Introduction"
-      
     ),
     # the second page
     tabPanel(
@@ -23,6 +22,7 @@ ui <- fluidPage(
             inputId = "team",
             label = "Which team do u want to view?",
             choices = list(
+              "All" = "all",
               "Hawks" = "Hawks",
               "Celtics" = "Celtics",
               "Nets" = "Nets",
@@ -32,7 +32,7 @@ ui <- fluidPage(
               "Mavericks" = "Mavericks",
               "Nuggets" = "Nuggets",
               "Pistons" = "Pistons",
-              "Warriors" = "Warrirors",
+              "Warriors" = "Warriors",
               "Rockets" = "Rockets",
               "Pacers" = "Pacers",
               "Clippers" = "Clippers",
@@ -47,21 +47,19 @@ ui <- fluidPage(
               "Magic" = "Magic",
               "76ers" = "76ers",
               "Suns" = "Suns",
-              "Blazers" = "Blazers",
+              "Trail Blazers" = "Trail Blazers",
               "Kings" = "Kings",
-              "Spurs"= "Spurs",
+              "Spurs" = "Spurs",
               "Raptors" = "Raptors",
               "Jazz" = "Jazz",
               "Wizards" = "Wizards"
             )
+          )
+        ),
+        mainPanel(plotlyOutput("state_plot"))
 
           )
         ),
-        mainPanel(
-          
-        )
-      )
-    ),
     tabPanel(
       "Map of Colleges",
       sidebarLayout(
