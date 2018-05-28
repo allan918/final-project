@@ -56,10 +56,11 @@ ui <- fluidPage(
             )
           )
         ),
-        mainPanel(plotlyOutput("state_plot"))
-
-          )
-        ),
+        mainPanel(
+          plotlyOutput("state_plot")
+        )
+      )
+    ),
     tabPanel(
       "Map of Colleges",
       sidebarLayout(

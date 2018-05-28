@@ -9,12 +9,14 @@ source("scripts/college_production.R")
 
 server <- function(input, output) {
   
+  # function to capitalize first letter of each word
   simpleCap <- function(x) {
     s <- strsplit(x, " ")[[1]]
     paste(toupper(substring(s, 1, 1)), substring(s, 2),
           sep = "", collapse = " ")
   }
   
+  # displays the name of inputted player
   output$selected_name <- renderText({
     simpleCap(paste(input$stat_first_name, input$stat_last_name))
   })
@@ -29,7 +31,7 @@ server <- function(input, output) {
   
   # display of player stats
   output$stats <- renderUI({
-    player <- stats_df %>%
+    player <- stats_with_wins %>%
       filter(tolower(X.FirstName) == tolower(input$stat_first_name),
              tolower(X.LastName) == tolower(input$stat_last_name))
     if (tolower(paste(input$stat_first_name, input$stat_last_name))
@@ -39,7 +41,8 @@ server <- function(input, output) {
       str2 <- paste(player$X.Height, "|", player$X.Weight, "lbs")
       str3 <- paste("PPG:", player$ppg, "|", "3P%:", player$three_pct,
                   "|", "2P%:", player$two_pct, "|", "FT%:", player$ft_pct)
-      HTML(paste(str1, str2, str3, sep = "<br/>"))
+      str4 <- paste("Player Rank:", player$player_rank)
+      HTML(paste(str1, str2, str3, str4, sep = "<br/>"))
     } else {
       HTML(paste("Please Input a Valid Active Player"))
     }
@@ -53,6 +56,7 @@ server <- function(input, output) {
   output$college_map <- renderPlotly({
     build_college_map(input$team_coll, nba_players, colleges)
   })
+  
   players <- reactive({
     player <- read.csv("data/nba.csv", stringsAsFactors = FALSE) %>%
       filter(X.Birth.Country == "USA")
@@ -65,6 +69,7 @@ server <- function(input, output) {
       summarise(sum = sum(count))
     play_group
   })
+  
   output$state_plot <- renderPlotly({
     g <- list(
       scope = "usa",
