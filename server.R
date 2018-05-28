@@ -3,11 +3,8 @@ library(ggplot2)
 library(plotly)
 library(dplyr)
 source("player-stats.R")
-state_name <- function(input) {
-  substr(input, nchar(input) - 1, nchar(input))
-}
+source("scripts/state-name.R")
 source("scripts/college_production.R")
-
 server <- function(input, output) {
   
   simpleCap <- function(x) {
@@ -49,7 +46,9 @@ server <- function(input, output) {
       filter(X.Birth.Country == "USA")
     player$state <- state_name(player$X.Birth.City)
     player$count <- 1
-    player <- filter(player, X.Team.Name == input$team)
+    if(input$team != "all") {
+      player <- filter(player, X.Team.Name == input$team)
+    }
     play_group <- group_by(player, state) %>%
       summarise(sum = sum(count))
     play_group
