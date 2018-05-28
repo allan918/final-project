@@ -57,9 +57,8 @@ ui <- fluidPage(
           )
         ),
         mainPanel(plotlyOutput("state_plot"))
-
-          )
-        ),
+      )
+    ),
     tabPanel(
       "Map of Colleges",
       sidebarLayout(
@@ -68,7 +67,8 @@ ui <- fluidPage(
           selectInput(
             inputId = "team_coll",
             label = "Select a team",
-            choices = list("All" = "all",
+            choices = list(
+              "All" = "all",
               "Atlanta Hawks" = "ATL",
               "Boston Celtics" = "BOS",
               "Brooklyn Nets" = "BRO",
@@ -95,7 +95,7 @@ ui <- fluidPage(
               "Phoenix Suns" = "PHX",
               "Portland Trail Blazers" = "POR",
               "Sacramento Kings" = "SAC",
-              "San Antonio Spurs"= "SAS",
+              "San Antonio Spurs" = "SAS",
               "Toronto Raptors" = "TOR",
               "Utah Jazz" = "UTA",
               "Washington Wizards" = "WAS"
