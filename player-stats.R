@@ -9,8 +9,7 @@ stats_df <- stats_df[-c(387), ]
 nba_info_df <- read.csv(file = "data/nba.csv", stringsAsFactors = FALSE)
 
 nba_info_df <- nba_info_df %>%
-  filter(X.Team.Abbr. != "") %>%
-  group_by(X.LastName)
+  filter(X.Team.Abbr. != "")
 
 player_names <- paste(stats_df$X.FirstName, stats_df$X.LastName)
 
@@ -18,7 +17,8 @@ stats_df$player_names <- player_names
 
 nba_info_df$player_names <- player_names
 
-stats_df$ppg <- (stats_df$X.FtMade + 2 * stats_df$X.Fg2PtMade + 3 * stats_df$X.Fg3PtMade) / stats_df$X.GamesPlayed
+stats_df$ppg <- round((stats_df$X.FtMade + 2 * stats_df$X.Fg2PtMade
+                       + 3 * stats_df$X.Fg3PtMade) / stats_df$X.GamesPlayed, 2)
 
 three_pct <- paste0(round(stats_df$X.Fg3PtMade / stats_df$X.Fg3PtAtt * 100, 2), "%")
 

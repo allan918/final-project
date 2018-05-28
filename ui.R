@@ -115,9 +115,14 @@ ui <- fluidPage(
       sidebarLayout(
         sidebarPanel(
           textInput(
-            inputId = "stat_name",
-            label = "Type in a Player Name",
-            value = player_names
+            inputId = "stat_first_name",
+            label = "Type in a Player's First Name",
+            value = nba_info_df$X.FirstName
+          ),
+          textInput(
+            inputId = "stat_last_name",
+            label = "Type in a Player's Last Name",
+            value = nba_info_df$X.LastName
           )
         ),
         mainPanel(
