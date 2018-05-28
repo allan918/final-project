@@ -2,7 +2,7 @@ library(shiny)
 library(ggplot2)
 library(plotly)
 
-source("player-stats.R")
+source("scripts/player-stats.R")
 
 ui <- fluidPage(
   theme = "styles.css",

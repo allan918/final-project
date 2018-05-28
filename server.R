@@ -2,9 +2,11 @@ library(shiny)
 library(ggplot2)
 library(plotly)
 library(dplyr)
-source("player-stats.R")
+
+source("scripts/player-stats.R")
 source("scripts/state-name.R")
 source("scripts/college_production.R")
+
 server <- function(input, output) {
   
   simpleCap <- function(x) {
