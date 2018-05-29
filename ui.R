@@ -12,7 +12,6 @@ ui <- fluidPage(
     tabPanel(
       "Introduction",
       mainPanel(
-        h1("2017-2018 NBA Players", align = "center"),
         h3("By: Xifei Wang, Samuel Valdes, Kcee Landon, Michael Bantle", align = "center"),
         h5("This page shows information about individual NBA players by team in the United States.", 
            "Each tab, respectively, shows a map where individual players were born by state, a map of the number of",
