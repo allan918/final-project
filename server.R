@@ -35,13 +35,13 @@ server <- function(input, output) {
       filter(tolower(X.FirstName) == tolower(input$stat_first_name),
              tolower(X.LastName) == tolower(input$stat_last_name))
     if (tolower(paste(input$stat_first_name, input$stat_last_name))
-        %in% tolower(nba_info_df$player_names)) {
+        %in% tolower(stats_df$player_names)) {
       str1 <- paste0(player$X.Team.City, " ", player$X.Team.Name,
                    " #", player$X.Jersey.Num, " | ", player$X.Position)
       str2 <- paste(player$X.Height, "|", player$X.Weight, "lbs")
       str3 <- paste("PPG:", player$ppg, "|", "3P%:", player$three_pct,
                   "|", "2P%:", player$two_pct, "|", "FT%:", player$ft_pct)
-      str4 <- paste("Player Rank:", player$player_rank)
+      str4 <- paste("Our Rating:", round(player$player_score, 3), "|", "Player Rank:", player$player_rank)
       HTML(paste(str1, str2, str3, str4, sep = "<br/>"))
     } else {
       HTML(paste("Please Input a Valid Active Player"))

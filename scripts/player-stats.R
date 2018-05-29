@@ -4,20 +4,20 @@ library(dplyr)
 
 stats_df <- read.csv(file = "data/points_data.csv", stringsAsFactors = F)
 
-stats_df <- stats_df[-c(387), ]
+stats_df <- stats_df[!(stats_df$X.Age == 0),]
 
 nba_info_df <- read.csv(file = "data/nba.csv", stringsAsFactors = F)
 
 nba_info_df <- nba_info_df %>%
   filter(X.Team.Abbr. != "")
 
+nba_info_df <- nba_info_df[!(nba_info_df$X.Age == 0),]
+
 team_df <- read.csv(file = "data/teamstandings.csv", stringsAsFactors = F)
 
 player_names <- paste(stats_df$X.FirstName, stats_df$X.LastName)
 
 stats_df$player_names <- player_names
-
-nba_info_df$player_names <- player_names
 
 stats_df$ppg <- round((stats_df$X.FtMade + 2 * stats_df$X.Fg2PtMade
                        + 3 * stats_df$X.Fg3PtMade) / stats_df$X.GamesPlayed, 2)
@@ -45,12 +45,26 @@ team_and_wins_df <- data.frame(X.Team.Abbr., wins, stringsAsFactors = F)
 
 stats_with_wins <- left_join(stats_df, team_and_wins_df)
 
-stats_with_wins$player_score <- stats_with_wins$total_points + stats_with_wins$wins
+league_avg <- sum(stats_with_wins$total_points) / nrow(stats_with_wins)
+
+win_avg <- sum(team_df$X.Wins) / nrow(team_df)
+
+games_played_avg <- sum(stats_with_wins$X.GamesPlayed) / nrow(stats_with_wins)
+
+# ranking system with weights
+stats_with_wins$player_score <- stats_with_wins$total_points / league_avg  +
+  stats_with_wins$wins / win_avg + stats_with_wins$X.GamesPlayed / games_played_avg
 
 stats_with_wins <- stats_with_wins %>%
   arrange(-player_score) %>%
-  mutate(player_rank = c(1:615)) %>%
+  mutate(player_rank = c(1:573)) %>%
   arrange(X.LastName)
 
+stats_with_wins[is.na(stats_with_wins)] <- "Not Available"
 
+# filtering out the coaches
+stats_with_wins <- stats_with_wins[!(stats_with_wins$X.Age == 0),]
+
+# filtering out those who did not play a game
+stats_with_wins <- stats_with_wins[!(stats_with_wins$X.GamesPlayed == 0),]
 
