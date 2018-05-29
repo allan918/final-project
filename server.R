@@ -24,11 +24,10 @@ server <- function(input, output) {
 
   
   # displays the name of inputted player
-
-
   output$selected_name <- renderText({
     simple_Cap(paste(input$stat_first_name, input$stat_last_name))
   })
+  
   # displays the player picture
   output$player_image <- renderUI({
     player <- nba_info_df %>%
@@ -38,6 +37,7 @@ server <- function(input, output) {
       )
     tags$img(src = player$X.Official.Image.URL)
   })
+  
   # display of player stats
   output$stats <- renderUI({
 
@@ -46,12 +46,18 @@ server <- function(input, output) {
              tolower(X.LastName) == tolower(input$stat_last_name))
     if (tolower(paste(input$stat_first_name, input$stat_last_name))
         %in% tolower(stats_df$player_names)) {
-      str1 <- paste0(player$X.Team.City, " ", player$X.Team.Name,
-                   " #", player$X.Jersey.Num, " | ", player$X.Position)
-      str2 <- paste(player$X.Height, "|", player$X.Weight, "lbs")
-      str3 <- paste("PPG:", player$ppg, "|", "3P%:", player$three_pct,
+      
+      str1 <- paste0("Team: ", player$X.Team.City, " ", player$X.Team.Name,
+                   " | Jersey Number: ", player$X.Jersey.Num,
+                   " | Position: ", player$X.Position)
+      
+      str2 <- paste("Height:", player$X.Height, "| Weight:", player$X.Weight, "lbs")
+      
+      str3 <- paste("PPG:", player$ppg, "FG%:", player$fg_pct, "|", "3P%:", player$three_pct,
                   "|", "2P%:", player$two_pct, "|", "FT%:", player$ft_pct)
+      
       str4 <- paste("Our Rating:", round(player$player_score, 3), "|", "Player Rank:", player$player_rank)
+      
       HTML(paste(str1, str2, str3, str4, sep = "<br/>"))
     } else {
       HTML(paste("Please Input a Valid Active Player"))

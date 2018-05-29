@@ -6,7 +6,7 @@ source("scripts/player-stats.R")
 
 ui <- fluidPage(
   theme = "styles.css",
-  h1("NBA"),
+  h1("2017-2018 NBA Season"),
   tabsetPanel(
     # the first page
     tabPanel(

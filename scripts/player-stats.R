@@ -37,6 +37,9 @@ stats_df$ft_pct <- replace(ft_pct, ft_pct == "NaN%", "0%")
 stats_df$total_points <- stats_df$X.Fg2PtMade * 2 + stats_df$X.Fg3PtMade * 3 +
   stats_df$X.FtMade
 
+stats_df$fg_pct <- paste0(round((stats_df$X.Fg2PtMade + stats_df$X.Fg3PtMade) /
+                                  (stats_df$X.Fg2PtAtt + stats_df$X.Fg3PtAtt) * 100, 2), "%")
+
 wins <- team_df$X.Wins
 
 X.Team.Abbr. <- team_df$X.Team.Abbr.
