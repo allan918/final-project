@@ -1,6 +1,7 @@
 # Function that plots the
 library(dplyr)
 library(plotly)
+library(RColorBrewer)
 build_college_map <- function(team, nba_players, colleges) {
   # To remove the coaches. Which have an age of 0.
   nba_players <- filter(nba_players, X.Age != 0) %>%
@@ -17,27 +18,24 @@ build_college_map <- function(team, nba_players, colleges) {
   rownames(colleges) <- colleges$name
   # To join the dataframe with the count with the one with the coordinates.
   to_plot <- left_join(colleges_count, colleges)
+  to_plot <- to_plot[order(to_plot$name),]
   if (to_plot[1] == "") {
     to_plot <- to_plot[-1, ]
   }
   if (team != "all") {
     marker_size <- 5 * (to_plot$count)
+    graph_title <- team
   } else {
     marker_size <- to_plot$count
+    graph_title <- "The NBA"
   }
-  m <- list(
-    l = 100,
-    r = 100,
-    b = 200,
-    t = 200,
-    pad = 8
-  )
+
   # Plots The Map using the coordinates, etc.!
   mapped <- plot_ly(
     type = "scattergeo", lon = to_plot$longitude, lat = to_plot$latitude, 
     mode = "markers",
     text = paste0(
-      to_plot$name, "</br> # Of Players Produced: ",
+      to_plot$name, "</br> Players Produced: ",
       to_plot$count
     ), color = to_plot$count, colors = "Spectral",
     marker = list(size = marker_size)
@@ -54,10 +52,6 @@ build_college_map <- function(team, nba_players, colleges) {
       showsubunits = TRUE,
       showcountries = TRUE,
       resolution = 50,
-      projection = list(
-        type = "conic conformal",
-        rotation = list(lon = -100)
-      ),
       lonaxis = list(
         showgrid = TRUE,
         gridwidth = 0.5,
@@ -69,7 +63,9 @@ build_college_map <- function(team, nba_players, colleges) {
         gridwidth = 0.5,
         range = c(20, 60),
         dtick = 5
-      ), autosize = F, width = 1000, height = 1000, margin = m
-    ))
+      )
+    ), title = paste0("Universities Player Production in ", graph_title)
+    ) %>%
+    colorbar(title = "Quantity of Players Produced")
   return(mapped)
 }

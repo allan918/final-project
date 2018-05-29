@@ -10,6 +10,7 @@ nba_players <- read.csv("data/nba.csv", stringsAsFactors = F)
 colleges <- read.csv("data/nba_colleges_location.csv",
   stringsAsFactors = F
 )
+
 server <- function(input, output) {
   simple_Cap <- function(x) {
     s <- strsplit(x, " ")[[1]]
