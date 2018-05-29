@@ -10,11 +10,19 @@ ui <- fluidPage(
   tabsetPanel(
     # the first page
     tabPanel(
-      "Introduction"
+      "Introduction",
+      mainPanel(
+        h1("2017-2018 NBA Players", align = "center"),
+        h3("By: Xifei Wang, Samuel Valdes, Kcee Landon, Michael Bantle", align = "center"),
+        h5("This page shows information about individual NBA players by team in the United States.", 
+           "Each tab, respectively, shows a map where individual players were born by state, a map of the number of",
+           "players at each university, and individual statistics in the 2017-2018 NBA season.", align = "center"),
+        h6("Links: ")
+      )
     ),
     # the second page
     tabPanel(
-      "Birth place by State and Team",
+      "Player Birth Place by State and Team",
       sidebarLayout(
         sidebarPanel(
           # select widget by states
@@ -57,7 +65,16 @@ ui <- fluidPage(
           )
         ),
         mainPanel(
-          plotlyOutput("state_plot")
+          plotlyOutput("state_plot"),
+          p("The map above selects a list of NBA teams and highlights the number of",
+            "professional players by state birthplace in each of the",
+          em("50"),
+            "states. Looking at the data, the greatest number of players born in an individual",
+            "state is",
+          strong(""),
+            "with",
+          em(""),
+            "players.")
         )
       )
     ),
@@ -105,7 +122,18 @@ ui <- fluidPage(
           )
         ),
         mainPanel(
-          plotlyOutput("college_map")
+          plotlyOutput("college_map"),
+          p("The map above shows the number of players and their respective university by state.",
+            " The university with the greatest number of NBA players produced is",
+          strong(""),
+            "with",
+          em(""),
+            "players. The university with the lowest number of NBA players produced is",
+          strong(""),
+            "with",
+          em(""),
+            "players. While the NBA is made up of majority former college athletes, it is important",
+            "to note that some players did not go to college, such as Lebron James.")
         )
       )
     ),
@@ -128,7 +156,20 @@ ui <- fluidPage(
         mainPanel(
           textOutput("selected_name"),
           uiOutput("player_image"),
-          htmlOutput("stats")
+          htmlOutput("stats"),
+          p("The information above details a number of statistics on each individual NBA basketball",
+            "player, including an image of each",
+          em("2017-2018"),
+            "NBA athlete. Statistics include each player's first and last name, team, jersey number",
+            "position, height, weight, points per game (PPG), fiels goal (FG) percentage, 3-point (3P)",
+            "percentage, 2-point (2P) percentage, and free throw (FT) percentage. Most importantly, these",
+            "these statistics help us to rank each individual player in the",
+          em("2017-2018"),
+            "NBA season. The",
+          strong("TOP 2"),
+            "players ranked this season are",
+          strong("James Harden and Lebron James"),
+            ", both who are a part of the 2018 NBA playoffs.")
         )
       )
     )
