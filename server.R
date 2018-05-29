@@ -2,26 +2,26 @@ library(shiny)
 library(ggplot2)
 library(plotly)
 library(dplyr)
+
 source("scripts/player-stats.R")
 source("scripts/state-name.R")
 source("scripts/college_production.R")
+
 # To pass the dataframes to the function
 nba_players <- read.csv("data/nba.csv", stringsAsFactors = F)
 colleges <- read.csv("data/nba_colleges_location.csv",
   stringsAsFactors = F
 )
-server <- function(input, output) {
 
+server <- function(input, output) {
   
   # function to capitalize first letter of each word
   simple_Cap <- function(x) {
-
     s <- strsplit(x, " ")[[1]]
     paste(toupper(substring(s, 1, 1)), substring(s, 2),
       sep = "", collapse = " "
     )
   }
-
   
   # displays the name of inputted player
   output$selected_name <- renderText({
@@ -40,7 +40,6 @@ server <- function(input, output) {
   
   # display of player stats
   output$stats <- renderUI({
-
     player <- stats_with_wins %>%
       filter(tolower(X.FirstName) == tolower(input$stat_first_name),
              tolower(X.LastName) == tolower(input$stat_last_name))
@@ -63,15 +62,13 @@ server <- function(input, output) {
       HTML(paste("Please Input a Valid Active Player"))
     }
   })
+  
   # Plots the college map
   output$college_map <- renderPlotly({
     build_college_map(input$team_coll, nba_players, colleges)
   })
 
-  
-
   # filter out the dataframe that we need
-
   players <- reactive({
     player <- nba_players %>%
       filter(X.Birth.Country == "USA")
@@ -85,10 +82,7 @@ server <- function(input, output) {
     play_group
   })
 
-  
-
   # draw the state plot
-
   output$state_plot <- renderPlotly({
     setting <- list(
       scope = "usa",
