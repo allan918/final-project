@@ -56,7 +56,7 @@ ui <- fluidPage(
           tought it would be interesting to see where players came from. In
           particular, from which State and/or College. In this project we take a
           look at the most prominent places that players are formed."),
-        p("Below our questions that we are going to answer through this
+        p("Below are questions that we will answer throughout this
           project:"),
         p("Question 1 - How many professional basketball players were born in",
           "each state? Filter by team."),
