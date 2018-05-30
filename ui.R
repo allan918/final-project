@@ -71,12 +71,13 @@ ui <- fluidPage(
           p("The map above selects a list of NBA teams and highlights the number of",
             "professional players by state birthplace in each of the",
           em("50"),
-            "states. Looking at the data, the greatest number of players born in an individual",
+            "states. Looking at the data, the greatest number of NBA players born in an individual",
             "state is",
-          strong(""),
+          strong("California"),
             "with",
-          em(""),
-            "players.")
+          em("72"),
+            "players. NBA recruiters can utilize this information to recruit players even earlier",
+            "than college, targeting states that currently produce the most NBA prospects.")
         )
       )
     ),
