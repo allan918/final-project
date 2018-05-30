@@ -1,14 +1,12 @@
 library(shiny)
+library(DT)
 library(ggplot2)
 library(plotly)
 library(shinythemes)
 source("scripts/player-stats.R")
+source("scripts/player-stats.R")
 nba_image_link <- paste0("http://diylogodesigns.com/blog/wp-content/",
           "uploads/2016/06/nba-logo-transparent-png-logo-download.png")
-
-library(DT)
-
-source("scripts/player-stats.R")
 ui <- fluidPage(
   theme = shinytheme("darkly"),
   h1("2017-2018 NBA Season"),
