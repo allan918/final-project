@@ -1,9 +1,12 @@
 library(shiny)
 library(ggplot2)
 library(plotly)
+library(shinythemes)
 source("scripts/player-stats.R")
+nba_image_link <- paste0("http://diylogodesigns.com/blog/wp-content/",
+          "uploads/2016/06/nba-logo-transparent-png-logo-download.png")
 ui <- fluidPage(
-  theme = "styles.css",
+  theme = shinytheme("darkly"),
   h1("2017-2018 NBA Season"),
   tabsetPanel(
     # the first page
@@ -18,33 +21,49 @@ ui <- fluidPage(
           filtered by team, in the United States.",
            "Each tab, respectively, shows a map where players
           were born by state, a map of the number of",
-           "players at each university, and individual
+           "players from each university, and individual
           statistics in the 2017-2018 NBA season.
           Our intended audience",
             "for this project is directed towards
-          curious NBA fans as well as recruiters. We obtained our data from",
-            "the following",
+          curious NBA fans as well as recruiters. We obtained our data from ",
           tags$a(href = "https://www.mysportsfeeds.com/data-feeds/api-docs/#",
-                 " link."), align = "center"),
+                 "MySportsFeeds."), align = "center"),
         p("Our team chose this website because of all the data it
           provides, including current season statistics, previous season's
-          statistics, playoff reports, box scores, and more. While there are
-          4 professional sports to choose from (NFL, NBA, MLB, NHL), our
+          statistics, playoff reports, box scores, and more. The data from this
+          website is crowd-sourced, which means that the data may not be as
+          accurate as the one the NBA manages but it has very useful features,
+          like their preferred hand, highschool they attended,
+          etc. For this project we focused on their birthplace, the college
+          they attended, and individual and team stats.
+          It is also important to note that there were prices
+          that ranged from $69 to $1399, but because we were college students
+          doing a project, we were able to access all data feeds for free.
+         While there are 4 professional sports to choose from (NFL, NBA, MLB,
+          NHL), our
           group decided to focus our attention towards the NBA because we
           are all big basketball fans, and the 2017-2018 season playoffs are
           going on right now!"),
-        
+        p("Now that the regular season is over, there is a lot of talk right
+          now on who the MVP should be. Because of all the buzz regarding
+          LeBron James, who took the Cavaliers to the finals,
+          and the success this season of the Rockets and James Harden, we
+          compared individual and team stats in order to get a ranking not
+          only for the best players in the league but also for the league as a
+          whole. Additionally, with the NBA Draft right around the corner, we
+          tought it would be interesting to see where players came from. In
+          particular, from which State and/or College. In this project we take a
+          look at the most prominent places that players are formed."),
         p("Below our questions that we are going to answer through this
           project:"),
-        
         p("Question 1 - How many professional basketball players were born in",
           "each state? Filter by team."),
-        
         p("Question 2 - What is the rank of each NBA player? Who are the top 3",
           "2017-2018 NBA players?"),
-          
         p("Question 3 - How many players in the NBA attended each college?",
-          "Filter by team.")
+          "Filter by team."),
+        tags$link(rel = "stylesheet", type = "text/css", href = "styles.css"),
+        tags$img(src = nba_image_link, align = "left")
       )
     ),
     # the second page
@@ -107,7 +126,7 @@ ui <- fluidPage(
           this information to recruit players even earlier",
             "than college,
           targeting states that currently produce the most NBA prospects.
-          For an interested fan, one can look at the datat to 
+          For an interested fan, one can look at the datat to
           see similarities in where they were born and see if there are
           any similarities with their favorite team!")
         )
@@ -155,15 +174,22 @@ ui <- fluidPage(
               "Washington Wizards" = "WAS"
             )
           ),
-          sliderInput("size", label = "Size of Points",
-                      min = 1, max = 10, value = 1)
-        ),
+          #To select the scale of the points
+          sliderInput("size", label = "Scale of Points",
+                      min = 1, max = 10, value = 1), 
+          tags$br(),
+          tags$div(class = "sidebar", 
+                   "You can select the team you prefer to visualize their 
+                    player's respective universities. You can also change
+                    the scale of the points in the graph so that they are
+                    more easy for you to see.")
+        ), 
         mainPanel(
           plotlyOutput("college_map"),
           p("The map above shows the number of players
-            and their respective university by state.",
+            and their respective University that can be filtered by team.",
             " The universities with the greatest number
-            of NBA players produced is",
+            of NBA players produced are",
           strong("The University of Kentucky and Duke
                  University"),
             "with",
@@ -188,7 +214,7 @@ ui <- fluidPage(
           at this university could be because of the most
           recent coach at the University, Lorenzo Romar, who
           is known for recruiting top NBA prospects and
-          therefore good players attract towards the school.")
+          therefore good players are attracted towards the school.")
         )
       )
     ),
@@ -240,6 +266,7 @@ ui <- fluidPage(
     )
   )
 )
+
 
 
 shinyUI(ui)
