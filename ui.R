@@ -174,7 +174,7 @@ ui <- fluidPage(
             "NBA season. The",
           strong("TOP 3"),
             "players ranked this season are",
-          strong(top_three)
+          strong("")
             )
         )
       )
