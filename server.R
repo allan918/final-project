@@ -15,7 +15,6 @@ colleges <- read.csv("data/nba_colleges_location.csv",
 )
 
 server <- function(input, output) {
-  
   # function to capitalize first letter of each word
   simple_cap <- function(x) {
     s <- strsplit(x, " ")[[1]]
@@ -48,7 +47,8 @@ server <- function(input, output) {
 
   # data table of stats
   output$stats_table <- renderDT({
-    validate(need(tolower(paste(input$stat_first_name, input$stat_last_name)) %in%
+    validate(need(tolower(paste(input$stat_first_name,
+                                input$stat_last_name)) %in%
                     tolower(stats_with_wins$player_names), message = F))
     player <- stats_with_wins %>%
       filter(
@@ -59,7 +59,6 @@ server <- function(input, output) {
     names(player) <- c(
       "Jersey #", "Position", "Team",
       "PPG", "3P%", "2P%", "FT%", "FG%", "Rating", "Rank")
-    
     datatable(player, caption = "2017-18 NBA Regular Season Statistics",
               rownames = T, filter = "top",
               options = list(
@@ -70,14 +69,10 @@ server <- function(input, output) {
         "PPG", "3P%", "2P%", "FT%", "FG%", "Rating", "Rank"),
         backgroundColor = "gray")
   })
-  
-  
-
   # Plots the college map
   output$college_map <- renderPlotly({
     build_college_map(input$team_coll, nba_players, colleges, input$size)
   })
-
   # filter out the dataframe that we need
   players <- reactive({
     player <- nba_players %>%
