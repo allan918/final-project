@@ -35,7 +35,7 @@ ui <- fluidPage(
           going on right now!"),
         
         p("Below our questions that we are going to answer through this
-          project"),
+          project:"),
         
         p("Question 1 - How many professional basketball players were born in",
           "each state? Filter by team."),
