@@ -5,21 +5,29 @@ library(plotly)
 source("scripts/player-stats.R")
 
 ui <- fluidPage(
-  titlePanel("Welcome to our project!"),
   theme = "styles.css",
   h1("2017-2018 NBA Season"),
   tabsetPanel(
     # the first page
-    #purpose of project, authors, source of data, intended audience, additional info
+    #purpose of project, authors, source of data,
+    #intended audience, additional info
     tabPanel(
       "Introduction",
       mainPanel(
-        p("By: Xifei Wang, Samuel Valdes, Kcee Landon, Michael Bantle", align = "center"),
-        p("Our project shows information about NBA players, filtered by team, in the United States.", 
-           "Each tab, respectively, shows a map where players were born by state, a map of the number of",
-           "players at each university, and individual statistics in the 2017-2018 NBA season. Our intended audience", 
-            "for this project is directed towards curious NBA fans as well as recruiters. We obtained our data from",
-            "the following", tags$a(href = "https://www.mysportsfeeds.com/data-feeds/api-docs/#", " link."), align = "center")
+        p("By: Xifei Wang, Samuel Valdes, Kcee Landon, Michael Bantle",
+          align = "center"),
+        p("Our project shows information about NBA players,
+          filtered by team, in the United States.",
+           "Each tab, respectively, shows a map where players
+          were born by state, a map of the number of",
+           "players at each university, and individual
+          statistics in the 2017-2018 NBA season.
+          Our intended audience",
+            "for this project is directed towards
+          curious NBA fans as well as recruiters. We obtained our data from",
+            "the following",
+          tags$a(href = "https://www.mysportsfeeds.com/data-feeds/api-docs/#",
+                 " link."), align = "center")
       )
     ),
     # the second page
@@ -68,16 +76,20 @@ ui <- fluidPage(
         ),
         mainPanel(
           plotlyOutput("state_plot"),
-          p("The map above selects a list of NBA teams and highlights the number of",
+          p("The map above selects a list of NBA teams
+            and highlights the number of",
             "professional players by state birthplace in each of the",
           em("50"),
-            "states. Looking at the data, the greatest number of NBA players born in an individual",
+            "states. Looking at the data, the greatest number of
+          NBA players born in an individual",
             "state is",
           strong("California"),
             "with",
           em("72"),
-            "players. NBA recruiters can utilize this information to recruit players even earlier",
-            "than college, targeting states that currently produce the most NBA prospects.")
+            "players. NBA recruiters can utilize
+          this information to recruit players even earlier",
+            "than college,
+          targeting states that currently produce the most NBA prospects.")
         )
       )
     ),
@@ -122,19 +134,26 @@ ui <- fluidPage(
               "Utah Jazz" = "UTA",
               "Washington Wizards" = "WAS"
             )
-          )
+          ),
+          sliderInput("size", label = "Size of Points",
+                      min = 1, max = 10, value = 1)
         ),
         mainPanel(
           plotlyOutput("college_map"),
-          p("The map above shows the number of players and their respective university by state.",
-            " The university with the greatest number of NBA players produced is",
+          p("The map above shows the number of players
+            and their respective university by state.",
+            " The university with the greatest number
+            of NBA players produced is",
           strong(""),
             "with",
           em(""),
-            "players. While the NBA is made up of majority former college athletes, it is important",
-            "to note that some players did not go to college, such as Lebron James. This information",
-            "is incredibly valuable for NBA recruiters who are further able to identify which universities",
-            "they want to focus their attention towards")
+            "players. While the NBA is made up of primarily
+          former college athletes, it is important",
+            "to note that some players did not go to college,
+          such as Lebron James. This information",
+            "is incredibly valuable for NBA recruiters who
+          are further able to identify which universities",
+            "they want to focus their attention towards.")
         )
       )
     ),
@@ -158,13 +177,18 @@ ui <- fluidPage(
           textOutput("selected_name"),
           uiOutput("player_image"),
           htmlOutput("stats"),
-          p("The information above details a number of statistics on each individual NBA",
+          p("The information above details a number
+            of statistics on each individual NBA",
             "player, including an image of each",
           em("2017-2018"),
-            "athlete. Statistics include each player's first and last name, team, jersey number",
-            "position, height, weight, points per game (PPG), fiels goal (FG) percentage, 3-point (3P)",
-            "percentage, 2-point (2P) percentage, and free throw (FT) percentage. Most importantly, these",
-            "these statistics help us to rank each individual player in the",
+            "athlete. Statistics include each player's
+          first and last name, team, jersey number",
+            "position, height, weight, points per game (PPG),
+          fiels goal (FG) percentage, 3-point (3P)",
+            "percentage, 2-point (2P) percentage, and free
+          throw (FT) percentage. Most importantly, these",
+            "these statistics help us to rank each
+          individual player in the",
           em("2017-2018"),
             "NBA season. The",
           strong("TOP 3"),
@@ -176,5 +200,6 @@ ui <- fluidPage(
     )
   )
 )
+
 
 shinyUI(ui)

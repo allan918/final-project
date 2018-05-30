@@ -3,13 +3,13 @@ body {
 	url("http://whpuxin.com/data/out/6/IMG_104224.png");
 }
 p {
-  color :black  ;
+  color: black;
   font-size:large ;
-  font-weight:bold;
+  font-weight: bold;
 }
 .control-label {
 	color: #FF6347;
-	font-weight:bold;
+	font-weight: bold;
 }
 
 

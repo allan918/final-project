@@ -14,20 +14,20 @@ colleges <- read.csv("data/nba_colleges_location.csv",
 )
 
 server <- function(input, output) {
-  
+
   # function to capitalize first letter of each word
-  simple_Cap <- function(x) {
+  simple_cap <- function(x) {
     s <- strsplit(x, " ")[[1]]
     paste(toupper(substring(s, 1, 1)), substring(s, 2),
       sep = "", collapse = " "
     )
   }
-  
+
   # displays the name of inputted player
   output$selected_name <- renderText({
-    simple_Cap(paste(input$stat_first_name, input$stat_last_name))
+    simple_cap(paste(input$stat_first_name, input$stat_last_name))
   })
-  
+
   # displays the player picture
   output$player_image <- renderUI({
     player <- nba_info_df %>%
@@ -37,35 +37,45 @@ server <- function(input, output) {
       )
     tags$img(src = player$X.Official.Image.URL)
   })
-  
+
   # display of player stats
   output$stats <- renderUI({
     player <- stats_with_wins %>%
-      filter(tolower(X.FirstName) == tolower(input$stat_first_name),
-             tolower(X.LastName) == tolower(input$stat_last_name))
+      filter(
+        tolower(X.FirstName) == tolower(input$stat_first_name),
+        tolower(X.LastName) == tolower(input$stat_last_name)
+      )
     if (tolower(paste(input$stat_first_name, input$stat_last_name))
-        %in% tolower(stats_df$player_names)) {
-      
-      str1 <- paste0("Team: ", player$X.Team.City, " ", player$X.Team.Name,
-                   " | Jersey Number: ", player$X.Jersey.Num,
-                   " | Position: ", player$X.Position)
-      
-      str2 <- paste("Height:", player$X.Height, "| Weight:", player$X.Weight, "lbs")
-      
-      str3 <- paste("PPG:", player$ppg, "FG%:", player$fg_pct, "|", "3P%:", player$three_pct,
-                  "|", "2P%:", player$two_pct, "|", "FT%:", player$ft_pct)
-      
-      str4 <- paste("Our Rating:", round(player$player_score, 3), "|", "Player Rank:", player$player_rank)
-      
+    %in% tolower(stats_df$player_names)) {
+      str1 <- paste0(
+        "Team: ", player$X.Team.City, " ", player$X.Team.Name,
+        " | Jersey Number: ", player$X.Jersey.Num,
+        " | Position: ", player$X.Position
+      )
+
+      str2 <- paste("Height:", player$X.Height,
+                    "| Weight:",
+                    player$X.Weight, "lbs")
+
+      str3 <- paste(
+        "PPG:", player$ppg, "FG%:", player$fg_pct, "|", "3P%:",
+        player$three_pct,
+        "|", "2P%:", player$two_pct, "|", "FT%:", player$ft_pct
+      )
+
+      str4 <- paste("Our Rating:", round(player$player_score, 3),
+                    "|", "Player Rank:", player$player_rank)
+
       HTML(paste(str1, str2, str3, str4, sep = "<br/>"))
     } else {
       HTML(paste("Please Input a Valid Active Player"))
     }
   })
-  
+
   # Plots the college map
+
   output$college_map <- renderPlotly({
-    build_college_map(input$team_coll, nba_players, colleges)
+    build_college_map(input$team_coll, nba_players, colleges, input$size)
   })
 
   # filter out the dataframe that we need
@@ -103,5 +113,5 @@ server <- function(input, output) {
     player_state
   })
 }
-  
+
 shinyServer(server)
