@@ -53,9 +53,9 @@ ui <- fluidPage(
           compared individual and team stats in order to get a ranking not
           only for the best players in the league but also for the league as a
           whole. Additionally, with the NBA Draft right around the corner, we
-          tought it would be interesting to see where players came from. In
+          thought it would be interesting to see where players came from. In
           particular, from which State and/or College. In this project we take a
-          look at the most prominent places that players are formed."),
+          look at the most prominent places to where players are raised."),
         p("Below are questions that we will answer throughout this
           project:"),
         p("Question 1 - How many professional basketball players were born in",
