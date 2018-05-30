@@ -5,7 +5,6 @@ library(plotly)
 source("scripts/player-stats.R")
 
 ui <- fluidPage(
-  titlePanel("Welcome to our project!"),
   theme = "styles.css",
   h1("2017-2018 NBA Season"),
   tabsetPanel(
@@ -131,10 +130,10 @@ ui <- fluidPage(
           strong(""),
             "with",
           em(""),
-            "players. While the NBA is made up of majority former college athletes, it is important",
+            "players. While the NBA is made up of primarily former college athletes, it is important",
             "to note that some players did not go to college, such as Lebron James. This information",
             "is incredibly valuable for NBA recruiters who are further able to identify which universities",
-            "they want to focus their attention towards")
+            "they want to focus their attention towards.")
         )
       )
     ),
@@ -169,11 +168,7 @@ ui <- fluidPage(
             "NBA season. The",
           strong("TOP 3"),
             "players ranked this season are",
-<<<<<<< HEAD
-          strong("Lebron James")
-=======
-          strong(top_three())
->>>>>>> bea4d387f817505b1ff0f8a3162e0a105ff4e053
+          strong("LJ")
             )
         )
       )
