@@ -2,6 +2,7 @@ library(shiny)
 library(ggplot2)
 library(plotly)
 library(dplyr)
+library(DT)
 
 source("scripts/player-stats.R")
 source("scripts/state-name.R")
@@ -35,45 +36,30 @@ server <- function(input, output) {
         tolower(X.FirstName) == tolower(input$stat_first_name),
         tolower(X.LastName) == tolower(input$stat_last_name)
       )
-    tags$img(src = player$X.Official.Image.URL)
+    if (player$X.Official.Image.URL != "Not Available") {
+      tags$img(src = player$X.Official.Image.URL)
+    } else {
+      HTML(paste("Image", player$X.Official.Image.URL))
+    }
   })
 
-  # display of player stats
-  output$stats <- renderUI({
+  # data table of stats
+  output$stats_table <- renderDT({
     player <- stats_with_wins %>%
       filter(
         tolower(X.FirstName) == tolower(input$stat_first_name),
         tolower(X.LastName) == tolower(input$stat_last_name)
       )
-    if (tolower(paste(input$stat_first_name, input$stat_last_name))
-    %in% tolower(stats_df$player_names)) {
-      str1 <- paste0(
-        "Team: ", player$X.Team.City, " ", player$X.Team.Name,
-        " | Jersey Number: ", player$X.Jersey.Num,
-        " | Position: ", player$X.Position
-      )
+    player <- player[c(5:6, 15, 26:29, 31, 33:34)]
+    names(player) <- c(
+      "Jersey #", "Position", "Team",
+      "PPG", "3P%", "2P%", "FT%", "FG%", "Rating", "Rank")
 
-      str2 <- paste("Height:", player$X.Height,
-                    "| Weight:",
-                    player$X.Weight, "lbs")
-
-      str3 <- paste(
-        "PPG:", player$ppg, "FG%:", player$fg_pct, "|", "3P%:",
-        player$three_pct,
-        "|", "2P%:", player$two_pct, "|", "FT%:", player$ft_pct
-      )
-
-      str4 <- paste("Our Rating:", round(player$player_score, 3),
-                    "|", "Player Rank:", player$player_rank)
-
-      HTML(paste(str1, str2, str3, str4, sep = "<br/>"))
-    } else {
-      HTML(paste("Please Input a Valid Active Player"))
-    }
+    datatable(player, caption = "2017-18 NBA Regular Season Statistics",
+              rownames = T, filter = "top", options = list(pageLength = 1))
   })
 
   # Plots the college map
-
   output$college_map <- renderPlotly({
     build_college_map(input$team_coll, nba_players, colleges, input$size)
   })

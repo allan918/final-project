@@ -5,6 +5,10 @@ library(shinythemes)
 source("scripts/player-stats.R")
 nba_image_link <- paste0("http://diylogodesigns.com/blog/wp-content/",
           "uploads/2016/06/nba-logo-transparent-png-logo-download.png")
+
+library(DT)
+
+source("scripts/player-stats.R")
 ui <- fluidPage(
   theme = shinytheme("darkly"),
   h1("2017-2018 NBA Season"),
@@ -146,10 +150,6 @@ ui <- fluidPage(
               "Boston Celtics" = "BOS",
               "Brooklyn Nets" = "BRO",
               "Charlotte Hornets" = "CHA",
-              "Chicago Bulls" = "CHI",
-              "Cleveland Cavaliers" = "CLE",
-              "Dallas Mavericks" = "DAL",
-              "Denver Nuggets" = "DEN",
               "Detroit Pistons" = "DET",
               "Golden State Warriors" = "GSW",
               "Houston Rockets" = "HOU",
@@ -176,14 +176,14 @@ ui <- fluidPage(
           ),
           #To select the scale of the points
           sliderInput("size", label = "Scale of Points",
-                      min = 1, max = 10, value = 1), 
+                      min = 1, max = 10, value = 1),
           tags$br(),
-          tags$div(class = "sidebar", 
-                   "You can select the team you prefer to visualize their 
+          tags$div(class = "sidebar",
+                   "You can select the team you prefer to visualize their
                     player's respective universities. You can also change
                     the scale of the points in the graph so that they are
                     more easy for you to see.")
-        ), 
+        ),
         mainPanel(
           plotlyOutput("college_map"),
           p("The map above shows the number of players
@@ -235,9 +235,9 @@ ui <- fluidPage(
           )
         ),
         mainPanel(
-          textOutput("selected_name"),
-          uiOutput("player_image"),
-          htmlOutput("stats"),
+          tags$div(class = "playername", textOutput("selected_name")),
+          tags$img(uiOutput("player_image"), align = "center"),
+          DTOutput("stats_table"),
           p("The information above details a number
             of statistics on each individual NBA",
             "player, including an image of each",
@@ -260,7 +260,7 @@ ui <- fluidPage(
           per game, three point shooting percentage, two
           point shooting percentage, and free throw
           percentage."
-            )
+          )
         )
       )
     )
