@@ -18,6 +18,13 @@ nba_info_df <- nba_info_df %>%
 # filtering out coaches
 nba_info_df <- nba_info_df[!(nba_info_df$X.Age == 0), ]
 
+# adding "Not Available" to non existent image urls
+nba_info_df$X.Official.Image.URL <-
+  replace(
+    nba_info_df$X.Official.Image.URL, nba_info_df$X.Official.Image.URL == "",
+    "Not Available"
+    )
+
 # data frame with statistics about wins and losses for each team
 team_df <- read.csv(file = "data/teamstandings.csv", stringsAsFactors = F)
 
@@ -85,9 +92,9 @@ games_played_avg <- sum(stats_with_wins$X.GamesPlayed) / nrow(stats_with_wins)
 
 # ranking system based on how above or below average a player is in three
 # categories: total points, team wins, and games played by a player
-stats_with_wins$player_score <- stats_with_wins$total_points / league_avg  +
+stats_with_wins$player_score <- round(stats_with_wins$total_points / league_avg  +
   stats_with_wins$wins / win_avg +
-  stats_with_wins$X.GamesPlayed / games_played_avg
+  stats_with_wins$X.GamesPlayed / games_played_avg, 4)
 
 # replacing "NA" values with "Not Available"
 stats_with_wins[is.na(stats_with_wins)] <- "Not Available"

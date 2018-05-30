@@ -1,7 +1,10 @@
 library(shiny)
 library(ggplot2)
 library(plotly)
+library(DT)
+
 source("scripts/player-stats.R")
+
 ui <- fluidPage(
   theme = "styles.css",
   h1("2017-2018 NBA Season"),
@@ -207,7 +210,7 @@ ui <- fluidPage(
         mainPanel(
           textOutput("selected_name"),
           uiOutput("player_image"),
-          htmlOutput("stats"),
+          DTOutput("stats_table"),
           p("The information above details a number
             of statistics on each individual NBA",
             "player, including an image of each",
@@ -230,7 +233,7 @@ ui <- fluidPage(
           per game, three point shooting percentage, two
           point shooting percentage, and free throw
           percentage."
-            )
+          )
         )
       )
     )
