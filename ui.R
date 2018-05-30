@@ -5,6 +5,7 @@ library(plotly)
 source("scripts/player-stats.R")
 
 ui <- fluidPage(
+  titlePanel("Welcome to our project!"),
   theme = "styles.css",
   h1("2017-2018 NBA Season"),
   tabsetPanel(
@@ -14,12 +15,11 @@ ui <- fluidPage(
       "Introduction",
       mainPanel(
         p("By: Xifei Wang, Samuel Valdes, Kcee Landon, Michael Bantle", align = "center"),
-        p("Our project shows information about NBA players, filtered by team, in the United States.", 
+        p("Our project shows information about NBA players, filtered by team, in the United States.",
            "Each tab, respectively, shows a map where players were born by state, a map of the number of",
-           "players at each university, and individual statistics in the 2017-2018 NBA season. Our intended audience", 
+           "players at each university, and individual statistics in the 2017-2018 NBA season. Our intended audience",
             "for this project is directed towards curious NBA fans as well as recruiters. We obtained our data from",
-            "the 'My Sports Feed' API link below. Enjoy!", align = "center"),
-        p("Links: https://www.mysportsfeeds.com/data-feeds/api-docs/#")
+            "the following", tags$a(href = "https://www.mysportsfeeds.com/data-feeds/api-docs/#", " link."), align = "center")
       )
     ),
     # the second page
@@ -122,17 +122,13 @@ ui <- fluidPage(
               "Utah Jazz" = "UTA",
               "Washington Wizards" = "WAS"
             )
-          ), 
+          ),
           sliderInput("size", label = "Size of Points", min = 1, max = 10, value = 1)
         ),
         mainPanel(
           plotlyOutput("college_map"),
           p("The map above shows the number of players and their respective university by state.",
             " The university with the greatest number of NBA players produced is",
-          strong(""),
-            "with",
-          em(""),
-            "players. The university with the lowest number of NBA players produced is",
           strong(""),
             "with",
           em(""),
@@ -174,8 +170,9 @@ ui <- fluidPage(
             "NBA season. The",
           strong("TOP 3"),
             "players ranked this season are",
-         strong("LOL")
-        )
+
+          strong(top_three())
+            )
         )
       )
     )
