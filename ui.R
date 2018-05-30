@@ -128,9 +128,9 @@ ui <- fluidPage(
           this information to recruit players even earlier",
             "than college,
           targeting states that currently produce the most NBA prospects.
-          For an interested fan, one can look at the datat to
-          see similarities in where they were born and see if there are
-          any similarities with their favorite team!")
+          For an interested fan, one can look at the data to
+          see similarities in where they were born relative to their
+          favorite team!")
         )
       )
     ),
