@@ -12,11 +12,11 @@ ui <- fluidPage(
     tabPanel(
       "Introduction",
       mainPanel(
-        h3("By: Xifei Wang, Samuel Valdes, Kcee Landon, Michael Bantle", align = "center"),
-        h5("This page shows information about individual NBA players by team in the United States.", 
+        p("By: Xifei Wang, Samuel Valdes, Kcee Landon, Michael Bantle", align = "center"),
+        p("This page shows information about individual NBA players by team in the United States.", 
            "Each tab, respectively, shows a map where individual players were born by state, a map of the number of",
            "players at each university, and individual statistics in the 2017-2018 NBA season.", align = "center"),
-        h6("Links: ")
+        p("Links: ")
       )
     ),
     # the second page
@@ -156,19 +156,19 @@ ui <- fluidPage(
           textOutput("selected_name"),
           uiOutput("player_image"),
           htmlOutput("stats"),
-          p("The information above details a number of statistics on each individual NBA basketball",
+          p("The information above details a number of statistics on each individual NBA",
             "player, including an image of each",
           em("2017-2018"),
-            "NBA athlete. Statistics include each player's first and last name, team, jersey number",
+            "athlete. Statistics include each player's first and last name, team, jersey number",
             "position, height, weight, points per game (PPG), fiels goal (FG) percentage, 3-point (3P)",
             "percentage, 2-point (2P) percentage, and free throw (FT) percentage. Most importantly, these",
             "these statistics help us to rank each individual player in the",
           em("2017-2018"),
             "NBA season. The",
-          strong("TOP 2"),
+          strong("TOP 3"),
             "players ranked this season are",
-          strong("James Harden and Lebron James"),
-            ", both who are a part of the 2018 NBA playoffs.")
+          strong("James Harden, Lebron James, and Anthony Davis.")
+            )
         )
       )
     )
