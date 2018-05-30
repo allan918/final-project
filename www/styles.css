@@ -1,9 +1,8 @@
 body {
-	background: 
-	url("http://whpuxin.com/data/out/6/IMG_104224.png");
+	background-color: #4d4d4d;
 }
 p {
-  color: black;
+  color: white;
   font-size:large ;
   font-weight: bold;
 }
@@ -11,5 +10,3 @@ p {
 	color: #FF6347;
 	font-weight: bold;
 }
-
-
