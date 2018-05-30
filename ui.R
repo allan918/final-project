@@ -26,7 +26,15 @@ ui <- fluidPage(
             "the following",
           tags$a(href = "https://www.mysportsfeeds.com/data-feeds/api-docs/#",
                  " link."), align = "center"),
-        p(""),
+        p("Our team chose this website because of all the data it
+          provides, including current season statistics, previous season's
+          statistics, playoff reports, box scores, and more. While there are
+          4 professional sports to choose from (NFL, NBA, MLB, NHL), our
+          group decided to focus our attention towards the NBA because we
+          are all big basketball fans, and the 2017-2018 season playoffs are
+          going on right now!"),
+        p("Below our questions that we are going to answer through this
+          project:"),
         p("Question 1 - How many professional basketball players were born in",
           "each state? Filter by team."),
         p("Question 2 - What is the rank of each NBA player? Who are the top 3",
@@ -95,9 +103,9 @@ ui <- fluidPage(
           this information to recruit players even earlier",
             "than college,
           targeting states that currently produce the most NBA prospects.
-          For an interested fan, one can see similarities in where they
-          were born and see if there are any similarities to their
-          favorite team!")
+          For an interested fan, one can look at the datat to
+          see similarities in where they were born and see if there are
+          any similarities with their favorite team!")
         )
       )
     ),
@@ -150,12 +158,13 @@ ui <- fluidPage(
           plotlyOutput("college_map"),
           p("The map above shows the number of players
             and their respective university by state.",
-            " The university with the greatest number
+            " The universities with the greatest number
             of NBA players produced is",
-          strong(""),
+          strong("The University of Kentucky and Duke
+                 University"),
             "with",
-          em(""),
-            "players. While the NBA is made up of primarily
+          em("30 and 26"),
+            "players, respectively. While the NBA is made up of primarily
           former college athletes, it is important",
             "to note that some players did not go to college,
           such as Lebron James. This information",
