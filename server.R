@@ -42,7 +42,7 @@ server <- function(input, output) {
       HTML(paste("Image", player$X.Official.Image.URL))
     }
   })
-  
+
   # data table of stats
   output$stats_table <- renderDT({
     player <- stats_with_wins %>%
@@ -54,7 +54,7 @@ server <- function(input, output) {
     names(player) <- c(
       "Jersey #", "Position", "Team",
       "PPG", "3P%", "2P%", "FT%", "FG%", "Rating", "Rank")
-    
+
     datatable(player, caption = "2017-18 NBA Regular Season Statistics",
               rownames = T, filter = "top", options = list(pageLength = 1))
   })

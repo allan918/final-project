@@ -92,7 +92,8 @@ games_played_avg <- sum(stats_with_wins$X.GamesPlayed) / nrow(stats_with_wins)
 
 # ranking system based on how above or below average a player is in three
 # categories: total points, team wins, and games played by a player
-stats_with_wins$player_score <- round(stats_with_wins$total_points / league_avg  +
+stats_with_wins$player_score <- round(
+  stats_with_wins$total_points / league_avg +
   stats_with_wins$wins / win_avg +
   stats_with_wins$X.GamesPlayed / games_played_avg, 4)
 
@@ -121,6 +122,3 @@ top_three <- function() {
 
   paste0(top_players[1, ], ", ", top_players[2, ], ", and ", top_players[3, ])
 }
-
-
-
