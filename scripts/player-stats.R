@@ -97,3 +97,5 @@ stats_with_wins <- stats_with_wins %>%
   mutate(player_rank = c(1:527)) %>%
   arrange(X.LastName)
 
+#function for top 3 ranked NBA players
+top_three <- function(player_one, player_two, player_three)
