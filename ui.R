@@ -14,9 +14,9 @@ ui <- fluidPage(
       "Introduction",
       mainPanel(
         p("By: Xifei Wang, Samuel Valdes, Kcee Landon, Michael Bantle", align = "center"),
-        p("Our project shows information about NBA players, filtered by team, in the United States.", 
+        p("Our project shows information about NBA players, filtered by team, in the United States.",
            "Each tab, respectively, shows a map where players were born by state, a map of the number of",
-           "players at each university, and individual statistics in the 2017-2018 NBA season. Our intended audience", 
+           "players at each university, and individual statistics in the 2017-2018 NBA season. Our intended audience",
             "for this project is directed towards curious NBA fans as well as recruiters. We obtained our data from",
             "the following", tags$a(href = "https://www.mysportsfeeds.com/data-feeds/api-docs/#", " link."), align = "center")
       )
@@ -121,7 +121,8 @@ ui <- fluidPage(
               "Utah Jazz" = "UTA",
               "Washington Wizards" = "WAS"
             )
-          )
+          ),
+          sliderInput("size", label = "Size of Points", min = 1, max = 10, value = 1)
         ),
         mainPanel(
           plotlyOutput("college_map"),
@@ -168,12 +169,14 @@ ui <- fluidPage(
             "NBA season. The",
           strong("TOP 3"),
             "players ranked this season are",
-          strong("LJ")
+
+          strong(top_three())
             )
         )
       )
     )
   )
 )
+
 
 shinyUI(ui)

@@ -64,8 +64,9 @@ server <- function(input, output) {
   })
   
   # Plots the college map
+
   output$college_map <- renderPlotly({
-    build_college_map(input$team_coll, nba_players, colleges)
+    build_college_map(input$team_coll, nba_players, colleges, input$size)
   })
 
   # filter out the dataframe that we need

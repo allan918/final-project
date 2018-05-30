@@ -96,15 +96,12 @@ stats_with_wins <- stats_with_wins %>%
   arrange(-player_score) %>%
   mutate(player_rank = c(1:527)) %>%
   arrange(X.LastName)
-<<<<<<< HEAD
-=======
 
-#function for top 3 ranked NBA players
+
 top_three <- function() {
   top_players <- stats_with_wins %>%
     filter(player_rank == 1 | player_rank == 2 | player_rank == 3) %>%
     select(player_names)
-  
+
   paste0(top_players[1,], ", ", top_players[2,], ", and ", top_players[3,])
 }
->>>>>>> bea4d387f817505b1ff0f8a3162e0a105ff4e053

@@ -1,8 +1,9 @@
-# Function that plots the
+# Function that plots the College Production map.
 library(dplyr)
 library(plotly)
 library(RColorBrewer)
-build_college_map <- function(team, nba_players, colleges) {
+
+build_college_map <- function(team, nba_players, colleges, point_size) {
   # To remove the coaches. Which have an age of 0.
   nba_players <- filter(nba_players, X.Age != 0) %>%
     select(X.College, X.Team.Abbr.)
@@ -18,21 +19,20 @@ build_college_map <- function(team, nba_players, colleges) {
   rownames(colleges) <- colleges$name
   # To join the dataframe with the count with the one with the coordinates.
   to_plot <- left_join(colleges_count, colleges)
-  to_plot <- to_plot[order(to_plot$name),]
+  to_plot <- to_plot[order(to_plot$name), ]
   if (to_plot[1] == "") {
     to_plot <- to_plot[-1, ]
   }
   if (team != "all") {
-    marker_size <- 5 * (to_plot$count)
     graph_title <- team
   } else {
-    marker_size <- to_plot$count
     graph_title <- "The NBA"
   }
+  marker_size <- point_size * (to_plot$count)
 
   # Plots The Map using the coordinates, etc.!
   mapped <- plot_ly(
-    type = "scattergeo", lon = to_plot$longitude, lat = to_plot$latitude, 
+    type = "scattergeo", lon = to_plot$longitude, lat = to_plot$latitude,
     mode = "markers",
     text = paste0(
       to_plot$name, "</br> Players Produced: ",
