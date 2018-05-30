@@ -218,7 +218,12 @@ ui <- fluidPage(
             "NBA season. The",
           strong("TOP 3"),
             "players ranked this season are",
-          strong(top_three())
+          strong(top_three()), ". It is important to note
+          that there are biases in these rankings. We
+          derived our ranking system by individual points
+          per game, three point shooting percentage, two
+          point shooting percentage, and free throw
+          percentage."
             )
         )
       )
