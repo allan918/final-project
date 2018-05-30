@@ -59,7 +59,11 @@ server <- function(input, output) {
               rownames = T, filter = "top",
               options = list(
                 pageLength = 1, sDom  = '<"top">rt'
-                ))
+                )) %>%
+      formatStyle(c(
+        "Jersey #", "Position", "Team",
+        "PPG", "3P%", "2P%", "FT%", "FG%", "Rating", "Rank"),
+        backgroundColor = "gray")
   })
 
   # Plots the college map
