@@ -19,8 +19,7 @@ ui <- fluidPage(
            "Each tab, respectively, shows a map where players were born by state, a map of the number of",
            "players at each university, and individual statistics in the 2017-2018 NBA season. Our intended audience", 
             "for this project is directed towards curious NBA fans as well as recruiters. We obtained our data from",
-            "the 'My Sports Feed' API link below. Enjoy!", align = "center"),
-        p("Links: https://www.mysportsfeeds.com/data-feeds/api-docs/#")
+            "the following", tags$a(href = "https://www.mysportsfeeds.com/data-feeds/api-docs/#", " link."), align = "center")
       )
     ),
     # the second page
@@ -132,10 +131,6 @@ ui <- fluidPage(
           strong(""),
             "with",
           em(""),
-            "players. The university with the lowest number of NBA players produced is",
-          strong(""),
-            "with",
-          em(""),
             "players. While the NBA is made up of majority former college athletes, it is important",
             "to note that some players did not go to college, such as Lebron James. This information",
             "is incredibly valuable for NBA recruiters who are further able to identify which universities",
@@ -174,7 +169,7 @@ ui <- fluidPage(
             "NBA season. The",
           strong("TOP 3"),
             "players ranked this season are",
-          strong("")
+          strong(top_three())
             )
         )
       )
