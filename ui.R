@@ -14,6 +14,7 @@ ui <- fluidPage(
     # the first page
     #purpose of project, authors, source of data,
     #intended audience, additional info
+    #questions to answer through project
     tabPanel(
       "Introduction",
       mainPanel(
@@ -71,6 +72,9 @@ ui <- fluidPage(
       )
     ),
     # the second page
+    #selecting birthplace of NBA players
+    #filtered by team
+    #default is ALL teams
     tabPanel(
       "Player Birth Place by State and Team",
       sidebarLayout(
@@ -114,6 +118,10 @@ ui <- fluidPage(
             )
           )
         ),
+    #US map filtered by state
+    #Each state has X amount of players born there
+    #Additional analysis of the data
+    #Description of the purpose of this data
         mainPanel(
           plotlyOutput("state_plot"),
           p("The map above selects a list of NBA teams
@@ -175,6 +183,7 @@ ui <- fluidPage(
             )
           ),
           #To select the scale of the points
+          #Scale is 1 to 10
           sliderInput("size", label = "Scale of Points",
                       min = 1, max = 10, value = 1),
           tags$br(),
@@ -184,7 +193,10 @@ ui <- fluidPage(
                     the scale of the points in the graph so that they are
                     more easy for you to see.")
         ),
-        mainPanel(
+      #US map of colleges on a coordinate system
+      #Deeper dive into findings of data
+      #Explanation of why this is important for audience
+         mainPanel(
           plotlyOutput("college_map"),
           p("The map above shows the number of players
             and their respective University that can be filtered by team.",
@@ -219,6 +231,9 @@ ui <- fluidPage(
       )
     ),
     # player stats
+    #ranking system
+    #picture of player from csv data
+    #filter by first and last name of player
     tabPanel(
       "Active Player Statistics",
       sidebarLayout(
@@ -234,6 +249,8 @@ ui <- fluidPage(
             value = nba_info_df$X.LastName
           )
         ),
+    #explanation of ranking system in analysis
+    #organize data in a list underneath picture
         mainPanel(
           tags$div(class = "playername", textOutput("selected_name")),
           tags$img(uiOutput("player_image"), align = "center"),
