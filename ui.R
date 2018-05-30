@@ -27,7 +27,17 @@ ui <- fluidPage(
           curious NBA fans as well as recruiters. We obtained our data from",
             "the following",
           tags$a(href = "https://www.mysportsfeeds.com/data-feeds/api-docs/#",
-                 " link."), align = "center")
+                 " link."), align = "center"),
+        p(""),
+        
+        p("Question 1 - How many professional basketball players were born in",
+          "each state? Filter by team."),
+        
+        p("Question 2 - What is the rank of each NBA player? Who are the top 3",
+          "2017-2018 NBA players?"),
+          
+        p("Question 3 - How many players in the NBA attended each college?",
+          "Filter by team.")
       )
     ),
     # the second page
@@ -89,7 +99,10 @@ ui <- fluidPage(
             "players. NBA recruiters can utilize
           this information to recruit players even earlier",
             "than college,
-          targeting states that currently produce the most NBA prospects.")
+          targeting states that currently produce the most NBA prospects.
+          For an interested fan, one can see similarities in where they
+          were born and see if there are any similarities to their
+          favorite team!")
         )
       )
     ),
@@ -153,7 +166,21 @@ ui <- fluidPage(
           such as Lebron James. This information",
             "is incredibly valuable for NBA recruiters who
           are further able to identify which universities",
-            "they want to focus their attention towards.")
+            "they want to focus their attention towards.
+          Additionally, we find it important to note that
+          the Southeastern region of the United States
+          has the most concentrated NBA prospects. While
+          it is hard to know the cause, a correlation
+          could be because the Southeast has the greatest
+          black population per capita. Finally, we can
+          turn our attention towards the University of
+          Washington, which looks like an outlier located in
+          the Northwestern region of the United States. A
+          reason for a high concentration of NBA athletes
+          at this university could be because of the most
+          recent coach at the University, Lorenzo Romar, who
+          is known for recruiting top NBA prospects and
+          therefore good players attract towards the school.")
         )
       )
     ),
