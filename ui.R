@@ -9,14 +9,17 @@ ui <- fluidPage(
   h1("2017-2018 NBA Season"),
   tabsetPanel(
     # the first page
+    #purpose of project, authors, source of data, intended audience, additional info
     tabPanel(
       "Introduction",
       mainPanel(
         p("By: Xifei Wang, Samuel Valdes, Kcee Landon, Michael Bantle", align = "center"),
-        p("This page shows information about individual NBA players by team in the United States.", 
+        p("Our project shows information about individual NBA players by team in the United States.", 
            "Each tab, respectively, shows a map where individual players were born by state, a map of the number of",
-           "players at each university, and individual statistics in the 2017-2018 NBA season.", align = "center"),
-        p("Links: ")
+           "players at each university, and individual statistics in the 2017-2018 NBA season. Our intended audience", 
+            "for this project is directed towards curious NBA fans as well as recruiters. We obtained our data from",
+            "the 'My Sports Feed' API link below. Enjoy!", align = "center"),
+        p("Links: https://www.mysportsfeeds.com/data-feeds/api-docs/#")
       )
     ),
     # the second page
@@ -132,7 +135,9 @@ ui <- fluidPage(
             "with",
           em(""),
             "players. While the NBA is made up of majority former college athletes, it is important",
-            "to note that some players did not go to college, such as Lebron James.")
+            "to note that some players did not go to college, such as Lebron James. This information",
+            "is incredibly valuable for NBA recruiters who are further able to identify which universities",
+            "they want to focus their attention towards")
         )
       )
     ),
