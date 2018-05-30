@@ -5,6 +5,7 @@ library(plotly)
 source("scripts/player-stats.R")
 
 ui <- fluidPage(
+  titlePanel("Welcome to our project!"),
   theme = "styles.css",
   h1("2017-2018 NBA Season"),
   tabsetPanel(
@@ -168,7 +169,11 @@ ui <- fluidPage(
             "NBA season. The",
           strong("TOP 3"),
             "players ranked this season are",
+<<<<<<< HEAD
           strong("Lebron James")
+=======
+          strong(top_three())
+>>>>>>> bea4d387f817505b1ff0f8a3162e0a105ff4e053
             )
         )
       )
