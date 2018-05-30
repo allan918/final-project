@@ -14,8 +14,8 @@ ui <- fluidPage(
       "Introduction",
       mainPanel(
         p("By: Xifei Wang, Samuel Valdes, Kcee Landon, Michael Bantle", align = "center"),
-        p("Our project shows information about individual NBA players by team in the United States.", 
-           "Each tab, respectively, shows a map where individual players were born by state, a map of the number of",
+        p("Our project shows information about NBA players, filtered by team, in the United States.", 
+           "Each tab, respectively, shows a map where players were born by state, a map of the number of",
            "players at each university, and individual statistics in the 2017-2018 NBA season. Our intended audience", 
             "for this project is directed towards curious NBA fans as well as recruiters. We obtained our data from",
             "the 'My Sports Feed' API link below. Enjoy!", align = "center"),
@@ -173,7 +173,7 @@ ui <- fluidPage(
             "NBA season. The",
           strong("TOP 3"),
             "players ranked this season are",
-          strong("James Harden, Lebron James, and Anthony Davis.")
+          strong(top_three)
             )
         )
       )
