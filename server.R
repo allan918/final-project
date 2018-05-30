@@ -15,7 +15,7 @@ colleges <- read.csv("data/nba_colleges_location.csv",
 )
 
 server <- function(input, output) {
-
+  
   # function to capitalize first letter of each word
   simple_cap <- function(x) {
     s <- strsplit(x, " ")[[1]]
@@ -36,15 +36,20 @@ server <- function(input, output) {
         tolower(X.FirstName) == tolower(input$stat_first_name),
         tolower(X.LastName) == tolower(input$stat_last_name)
       )
-    if (player$X.Official.Image.URL != "Not Available") {
+    if (!tolower(paste(input$stat_first_name, input$stat_last_name)) %in%
+        tolower(stats_with_wins$player_names)) {
+      HTML(paste("Please enter a valid player"))
+    } else if (player$X.Official.Image.URL != "Not Available") {
       tags$img(src = player$X.Official.Image.URL)
     } else {
-      HTML(paste("Image", player$X.Official.Image.URL))
+      HTML(paste("Image not Available"))
     }
   })
 
   # data table of stats
   output$stats_table <- renderDT({
+    validate(need(tolower(paste(input$stat_first_name, input$stat_last_name)) %in%
+                    tolower(stats_with_wins$player_names), message = F))
     player <- stats_with_wins %>%
       filter(
         tolower(X.FirstName) == tolower(input$stat_first_name),
@@ -54,17 +59,19 @@ server <- function(input, output) {
     names(player) <- c(
       "Jersey #", "Position", "Team",
       "PPG", "3P%", "2P%", "FT%", "FG%", "Rating", "Rank")
-
+    
     datatable(player, caption = "2017-18 NBA Regular Season Statistics",
               rownames = T, filter = "top",
               options = list(
                 pageLength = 1, sDom  = '<"top">rt'
-                )) %>%
+              )) %>%
       formatStyle(c(
         "Jersey #", "Position", "Team",
         "PPG", "3P%", "2P%", "FT%", "FG%", "Rating", "Rank"),
         backgroundColor = "gray")
   })
+  
+  
 
   # Plots the college map
   output$college_map <- renderPlotly({
