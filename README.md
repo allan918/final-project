@@ -4,13 +4,13 @@
 
 1. We will be working with datasets that display information about an NBA season including game statistics, player names, etc. The data was sourced from and collected by an API called **MySportsFeeds**.
 
-2. Our target audience is sports enthusiasts (specifically NBA) and potentially sports analysts who would want to evaluate data and talk about statistics on air on talk shows.
+2. Our target audience is sports enthusiasts (specifically NBA) and potentially sports analysts, or recruiters, who are interested in a specific team. The data will give the statistic of the number of NBA players born in each state, filtered by team. Another piece of data will show the colleges that the number of players attended, filtered by team.
 
-3. Question 1 - How many professional basketball players has a given state produced?
+3. Question 1 - How many professional basketball players were born in each state? Filter by team.
 
-Question 2 - Who led the league in points on a given year?
+Question 2 - What is the rank of each NBA players? Who are the top 3 2017-2018 NBA players?
 
-Question 3 - Who has won the MVP award the most times?
+Question 3 - How many players in the NBA attended each college? Filter by team.
 
 ## Technical Description
 
