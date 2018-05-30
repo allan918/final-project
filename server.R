@@ -56,7 +56,10 @@ server <- function(input, output) {
       "PPG", "3P%", "2P%", "FT%", "FG%", "Rating", "Rank")
 
     datatable(player, caption = "2017-18 NBA Regular Season Statistics",
-              rownames = T, filter = "top", options = list(pageLength = 1))
+              rownames = T, filter = "top",
+              options = list(
+                pageLength = 1, sDom  = '<"top">rt'
+                ))
   })
 
   # Plots the college map
