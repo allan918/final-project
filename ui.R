@@ -122,7 +122,8 @@ ui <- fluidPage(
               "Utah Jazz" = "UTA",
               "Washington Wizards" = "WAS"
             )
-          )
+          ), 
+          sliderInput("size", label = "Size of Points", min = 1, max = 10, value = 1)
         ),
         mainPanel(
           plotlyOutput("college_map"),
@@ -173,12 +174,13 @@ ui <- fluidPage(
             "NBA season. The",
           strong("TOP 3"),
             "players ranked this season are",
-          strong(top_three)
-            )
+         strong("LOL")
+        )
         )
       )
     )
   )
 )
+
 
 shinyUI(ui)
