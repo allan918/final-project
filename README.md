@@ -20,4 +20,4 @@
 
 2. We think we are going to have to filter down the data for sure. One weird thing is that in the first .csv file we acquired, there are weird hashtags in certain rows/cols so we will probably have to reformat this. Another weird thing about the data is that coaches are included with the players, so we will have to filter out the coaches to make an accurate rank of each NBA player. Finally, we will also need to figure out what certain columns signify because it may not be entirely clear.
 
-3. We will be using the **_plotly_** library to visualize data on maps. Besides this, I believe all other libraries we will use will be standard for this class.
+3. We will be using the **_plotly_** library to visualize data on maps. We also used the **_DT_** library to store information in a data table. Besides this, I believe all other libraries we will use will be standard for this project.
