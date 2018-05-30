@@ -64,6 +64,8 @@ ui <- fluidPage(
           "2017-2018 NBA players?"),
         p("Question 3 - How many players in the NBA attended each college?",
           "Filter by team."),
+        p("Question 4 - Which colleges produced the most
+          amount of active NBA players?"),
         tags$link(rel = "stylesheet", type = "text/css", href = "styles.css"),
         tags$img(src = nba_image_link, align = "left")
       )
