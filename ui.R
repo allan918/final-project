@@ -264,7 +264,4 @@ ui <- fluidPage(
     )
   )
 )
-
-
-
 shinyUI(ui)
