@@ -5,6 +5,7 @@ library(plotly)
 source("scripts/player-stats.R")
 
 ui <- fluidPage(
+  titlePanel("Welcome to our project!"),
   theme = "styles.css",
   h1("2017-2018 NBA Season"),
   tabsetPanel(

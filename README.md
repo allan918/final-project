@@ -2,7 +2,7 @@
 
 ## Project Description
 
-1. We will be working with datasets that display information about an NBA season including game statistics, player names, etc. The data was sourced from and collected through a .csv file on a wesbite called **MySportsFeeds**.
+1. We will be working with datasets that display information about an NBA season including game statistics, player names, etc. The data was sourced from and collected through a .csv file on a website called **MySportsFeeds**.
 
 2. Our target audience is sports enthusiasts (specifically NBA) and potentially sports analysts, or recruiters, who are interested in a specific team. The data will give the statistic of the number of NBA players born in each state, filtered by team. Another piece of data will show the colleges that the number of players attended, filtered by team.
 
