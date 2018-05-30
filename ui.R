@@ -168,7 +168,7 @@ ui <- fluidPage(
                  University"),
             "with",
           em("30 and 26"),
-            "players. While the NBA is made up of primarily
+            "players, respectively. While the NBA is made up of primarily
           former college athletes, it is important",
             "to note that some players did not go to college,
           such as Lebron James. This information",
