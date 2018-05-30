@@ -103,7 +103,7 @@ server <- function(input, output) {
     player_state <- plot_geo(players(), locationmode = "USA-states") %>%
       add_trace(
         z = ~ sum, locations = ~ state,
-        color = ~ sum, colors = "Purples"
+        color = ~ sum, colors = "Set3"
       ) %>%
       colorbar(title = "Players") %>%
       layout(
