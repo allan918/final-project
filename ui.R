@@ -26,7 +26,16 @@ ui <- fluidPage(
             "the following",
           tags$a(href = "https://www.mysportsfeeds.com/data-feeds/api-docs/#",
                  " link."), align = "center"),
-        p(""),
+        p("Our team chose this website because of all the data it
+          provides, including current season statistics, previous season's
+          statistics, playoff reports, box scores, and more. While there are
+          4 professional sports to choose from (NFL, NBA, MLB, NHL), our
+          group decided to focus our attention towards the NBA because we
+          are all big basketball fans, and the 2017-2018 season playoffs are
+          going on right now!"),
+        
+        p("Below our questions that we are going to answer through this
+          project"),
         
         p("Question 1 - How many professional basketball players were born in",
           "each state? Filter by team."),
