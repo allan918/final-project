@@ -107,9 +107,9 @@ ui <- fluidPage(
           this information to recruit players even earlier",
             "than college,
           targeting states that currently produce the most NBA prospects.
-          For an interested fan, one can see similarities in where they
-          were born and see if there are any similarities to their
-          favorite team!")
+          For an interested fan, one can look at the datat to 
+          see similarities in where they were born and see if there are
+          any similarities with their favorite team!")
         )
       )
     ),
@@ -162,11 +162,12 @@ ui <- fluidPage(
           plotlyOutput("college_map"),
           p("The map above shows the number of players
             and their respective university by state.",
-            " The university with the greatest number
+            " The universities with the greatest number
             of NBA players produced is",
-          strong(""),
+          strong("The University of Kentucky and Duke
+                 University"),
             "with",
-          em(""),
+          em("30 and 26"),
             "players. While the NBA is made up of primarily
           former college athletes, it is important",
             "to note that some players did not go to college,
