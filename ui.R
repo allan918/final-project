@@ -1,9 +1,7 @@
 library(shiny)
 library(ggplot2)
 library(plotly)
-
 source("scripts/player-stats.R")
-
 ui <- fluidPage(
   theme = "styles.css",
   h1("2017-2018 NBA Season"),
