@@ -27,13 +27,10 @@ ui <- fluidPage(
           tags$a(href = "https://www.mysportsfeeds.com/data-feeds/api-docs/#",
                  " link."), align = "center"),
         p(""),
-        
         p("Question 1 - How many professional basketball players were born in",
           "each state? Filter by team."),
-        
         p("Question 2 - What is the rank of each NBA player? Who are the top 3",
           "2017-2018 NBA players?"),
-          
         p("Question 3 - How many players in the NBA attended each college?",
           "Filter by team.")
       )

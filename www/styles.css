@@ -1,15 +1,19 @@
 body {
 	background: 
-	url("http://whpuxin.com/data/out/6/IMG_104224.png");
+	#4d4d4d;
 }
 p {
-  color: black;
+  color: white;
   font-size:large ;
-  font-weight: bold;
 }
 .control-label {
 	color: #FF6347;
 	font-weight: bold;
+}
+h1 {
+  color: #FFDAB9;
+  font-weight: bold;
+  font-family: "Gill Sans", sans-serif;;
 }
 
 
