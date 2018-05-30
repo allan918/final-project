@@ -106,5 +106,4 @@ server <- function(input, output) {
     player_state
   })
 }
-
 shinyServer(server)
